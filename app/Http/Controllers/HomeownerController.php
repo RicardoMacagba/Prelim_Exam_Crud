@@ -18,25 +18,18 @@ class HomeownerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Homeowner $homeowner)
+    public function store(Request $request)
     {
         $homeowner = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|string|email|max:255|unique:homeowners',
             'phone' => 'required|string|max:11',
-            'address' => 'required|string|max:255',
+            'address' => 'required',
         ]);
 
-        //create a token
-        // $token = $homeowner->createToken('homeowner_token');
-
-        // return response()->json([
-        //     'homeowner' => $homeowner,
-        //     'token' => $token->plainTextToken
-        // ]);
-        return Homeowner::create($request->all())->createToken('homeowner_token')->plainTextToken;
+        return Homeowner::create($homeowner);
     }
 
     /**

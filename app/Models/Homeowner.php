@@ -9,14 +9,16 @@ use Laravel\Sanctum\HasApiTokens;
 class Homeowner extends Model
 {
     /** @use HasFactory<\Database\Factories\HomeownerFactory> */
-    use HasFactory, HasFactory, HasApiTokens;
+    use HasFactory, HasApiTokens;
 
     protected $fillable = [
-        'first_name' => 'required|string|max:255',
-        'middle_name' => 'required|string|max:255',
-        'last_name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:homeowners',
-        'phone' => 'required|string|max:255',
-        'address' => 'required|string|max:255', 
+        'first_name',
+        'middle_name',
+        'last_name',
+        'email',
+        'phone',
+        'address',
+        'created_at',
+        'updated_at',
     ];
 }
